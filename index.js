@@ -17,6 +17,7 @@ for (var i = 0; i < buttons.length; i++) {
     // audio.play();
     var drum = this.innerHTML;
     playSound(drum);
+    buttonAnimation(drum);
   })
 }
 
@@ -24,6 +25,7 @@ document.addEventListener("keypress",function(event){  //keypress event is appli
   //alert("key was pressed");
   //console.log(event);
   playSound(event.key);
+  buttonAnimation(event.key);
 })
 
 function playSound(key){
@@ -56,4 +58,13 @@ function playSound(key){
       var audio = new Audio("sounds/kick-bass.mp3");
       audio.play();
   }
+}
+
+function buttonAnimation(key){
+  var button = document.querySelector("."+key);
+  button.classList.add("pressed");
+
+  setTimeout(function(){
+    button.classList.remove("pressed");
+  },100);
 }
